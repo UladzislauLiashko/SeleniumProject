@@ -16,6 +16,7 @@ public class CartPage {
 
     private static final By checkOutButton = Locators.getLocator("Cart.checkOutButton");
     private static final By confirmButton = Locators.getLocator("Cart.confirmButton");
+    private static final By removeItemFromCart = Locators.getLocator("Cart.removeItemFromCart");
 
 
     public void navigateToCart() {
@@ -39,7 +40,7 @@ public class CartPage {
         driver.findElement(confirmButton).click();
     }
 
-//    public void clearCart() {
-//        if
-//    }
+    public void removeItemFromCart() {
+        driver.findElement(removeItemFromCart).click();
+    }
 }

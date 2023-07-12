@@ -16,9 +16,9 @@ public class CatalogPage {
     }
 
     private static final By searchLine = Locators.getLocator("SidePanel.searchLine");
-    private static final By sizeDropdown = By.xpath("Catalog.sizeDropdown");
-    private static final By quantityField = By.xpath("Catalog.quantityField");
-    private static final By addToCart = By.xpath("Catalog.addToCart");
+    private static final By sizeDropdown = Locators.getLocator("Catalog.sizeDropdown");
+    private static final By quantityField = Locators.getLocator("Catalog.quantityField");
+    private static final By addToCart = Locators.getLocator("Catalog.addToCart");
 
     public boolean isElementPresent(By sizeDropdown) {
         try {
