@@ -15,9 +15,6 @@ import static org.junit.Assert.assertTrue;
 
 public class CartPageTests extends TestBase {
 
-    private static final By yellowDuck = Locators.getLocator("Catalog.yellowDuck");
-    private static final By successfulOrderMessage = Locators.getLocator("Cart.successfulOrderMessage");
-    private static final By emptyCartMessage = Locators.getLocator("Notifications.emptyCart");
     String emailForLogin = "vladleshko@gmail.com";
     String passwordForLogin = "zaqWER123";
     int itemCounter = 0;
@@ -29,15 +26,15 @@ public class CartPageTests extends TestBase {
         CatalogPage catalogPage = new CatalogPage(driver);
         CartPage cartPage = new CartPage(driver);
         Utils utils = new Utils(driver);
-        catalogPage.navigateToElementInCatalog(yellowDuck);
+        catalogPage.navigateToElementInCatalog(CatalogPage.yellowDuck);
         catalogPage.addItemToCart(duckOptions1);
         itemCounter += duckOptions1.getNumberOfItems();
-        utils.waitForQuantityChange(Locators.getLocator("Catalog.quantityLocator", itemCounter));
+        utils.generalWaiter(Locators.getLocator("Catalog.quantityLocator", itemCounter));
         cartPage.navigateToCart();
         cartPage.fillInRequiredInformation(user);
-        utils.waitForConfirmButtonAvailability();
+        utils.generalWaiter(CartPage.confirmButtonNotDisabled);
         cartPage.confirmOrder();
-        assertTrue(driver.findElement(successfulOrderMessage).isDisplayed());
+        assertTrue(driver.findElement(CartPage.successfulOrderMessage).isDisplayed());
     }
 
     @Test
@@ -48,13 +45,13 @@ public class CartPageTests extends TestBase {
         CartPage cartPage = new CartPage(driver);
         Utils utils = new Utils(driver);
         loginPage.attemptLogin(emailForLogin, passwordForLogin);
-        catalogPage.navigateToElementInCatalog(yellowDuck);
+        catalogPage.navigateToElementInCatalog(CatalogPage.yellowDuck);
         catalogPage.addItemToCart(duckOptions1);
         itemCounter += duckOptions1.getNumberOfItems();
-        utils.waitForQuantityChange(Locators.getLocator("Catalog.quantityLocator", itemCounter));
+        utils.generalWaiter(Locators.getLocator("Catalog.quantityLocator", itemCounter));
         cartPage.navigateToCart();
         cartPage.confirmOrder();
-        assertTrue(driver.findElement(successfulOrderMessage).isDisplayed());
+        assertTrue(driver.findElement(CartPage.successfulOrderMessage).isDisplayed());
     }
 
     @Test
@@ -63,14 +60,14 @@ public class CartPageTests extends TestBase {
         DuckOptions duckOptions1 = new DuckOptions(1, "Small");
         CatalogPage catalogPage = new CatalogPage(driver);
         CartPage cartPage = new CartPage(driver);
-        catalogPage.navigateToElementInCatalog(yellowDuck);
+        catalogPage.navigateToElementInCatalog(CatalogPage.yellowDuck);
         catalogPage.addItemToCart(duckOptions1);
         itemCounter += duckOptions1.getNumberOfItems();
-        utils.waitForQuantityChange(Locators.getLocator("Catalog.quantityLocator", itemCounter));
+        utils.generalWaiter(Locators.getLocator("Catalog.quantityLocator", itemCounter));
         driver.navigate().back();
         cartPage.navigateToCart();
         cartPage.removeItemFromCart();
-        utils.waitForEmptyCart();
-        assertTrue(driver.findElement(emptyCartMessage).isDisplayed());
+        utils.generalWaiter(CartPage.emptyCartMessage);
+        assertTrue(driver.findElement(CartPage.emptyCartMessage).isDisplayed());
     }
 }

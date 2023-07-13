@@ -11,9 +11,6 @@ import static org.junit.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class CatalogPageTests extends TestBase {
-    private static final By yellowDuck = Locators.getLocator("Catalog.yellowDuck");
-    private static final By blueDuck = Locators.getLocator("Catalog.blueDuck");
-    private static final By redDuck = Locators.getLocator("Catalog.redDuck");
     int itemCounter = 0;
     String positiveSearchItem = "Green Duck";
     String negativeSearchItem = "Java";
@@ -41,19 +38,19 @@ public class CatalogPageTests extends TestBase {
         DuckOptions duckOptions3 = new DuckOptions(2);
         CatalogPage catalogPage = new CatalogPage(driver);
         Utils utils = new Utils(driver);
-        catalogPage.navigateToElementInCatalog(yellowDuck);
+        catalogPage.navigateToElementInCatalog(CatalogPage.yellowDuck);
         catalogPage.addItemToCart(duckOptions1);
         itemCounter += duckOptions1.getNumberOfItems();
-        utils.waitForQuantityChange(Locators.getLocator("Catalog.quantityLocator", itemCounter));
+        utils.generalWaiter(Locators.getLocator("Catalog.quantityLocator", itemCounter));
         driver.navigate().back();
-        catalogPage.navigateToElementInCatalog(blueDuck);
+        catalogPage.navigateToElementInCatalog(CatalogPage.blueDuck);
         catalogPage.addItemToCart(duckOptions2);
         itemCounter += duckOptions2.getNumberOfItems();
-        utils.waitForQuantityChange(Locators.getLocator("Catalog.quantityLocator", itemCounter));
-        catalogPage.navigateToElementInCatalog(redDuck);
+        utils.generalWaiter(Locators.getLocator("Catalog.quantityLocator", itemCounter));
+        catalogPage.navigateToElementInCatalog(CatalogPage.redDuck);
         catalogPage.addItemToCart(duckOptions3);
         itemCounter += duckOptions3.getNumberOfItems();
-        utils.waitForQuantityChange(Locators.getLocator("Catalog.quantityLocator", itemCounter));
+        utils.generalWaiter(Locators.getLocator("Catalog.quantityLocator", itemCounter));
         assertTrue(driver.findElement((Locators.getLocator("Catalog.quantityLocator", itemCounter))).isDisplayed());
     }
 }

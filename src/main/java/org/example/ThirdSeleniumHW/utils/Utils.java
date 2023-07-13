@@ -11,24 +11,13 @@ import java.time.Duration;
 
 public class Utils {
 
-    private static final By confirmButtonNotDisabled = Locators.getLocator("Cart.confirmButtonNotDisabled");
-    private static final By emptyCartMessage = Locators.getLocator("Notifications.emptyCart");
-
-    private final WebDriver driver;
+    private static WebDriver driver;
 
     public Utils(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void waitForQuantityChange(By locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.presenceOfElementLocated((locator)));
-    }
-
-    public void waitForConfirmButtonAvailability() {
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.presenceOfElementLocated(confirmButtonNotDisabled));
-    }
-
-    public void waitForEmptyCart() {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(emptyCartMessage));
+    public void generalWaiter(By locator) {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 }

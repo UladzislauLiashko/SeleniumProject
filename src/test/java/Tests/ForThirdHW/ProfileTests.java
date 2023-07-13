@@ -3,7 +3,6 @@ package Tests.ForThirdHW;
 import org.example.ThirdSeleniumHW.locators.Locators;
 import org.example.ThirdSeleniumHW.pages.LoginPage;
 import org.junit.Test;
-import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertTrue;
 

@@ -19,6 +19,9 @@ public class CatalogPage {
     private static final By sizeDropdown = Locators.getLocator("Catalog.sizeDropdown");
     private static final By quantityField = Locators.getLocator("Catalog.quantityField");
     private static final By addToCart = Locators.getLocator("Catalog.addToCart");
+    public static final By yellowDuck = Locators.getLocator("Catalog.yellowDuck");
+    public static final By blueDuck = Locators.getLocator("Catalog.blueDuck");
+    public static final By redDuck = Locators.getLocator("Catalog.redDuck");
 
     public boolean isElementPresent(By sizeDropdown) {
         try {

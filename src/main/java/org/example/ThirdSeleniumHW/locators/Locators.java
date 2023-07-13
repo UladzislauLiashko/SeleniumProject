@@ -37,14 +37,14 @@ public class Locators {
         return by;
     }
 
-    public static By getLocator(String locator, int quantity) {
+    public static By getLocator(String locator, int itemCounter) {
         By by;
         String value = locators.getProperty(locator);
 
         String[] result = value.split("=", 2);
         LocatorType locatorType = LocatorType.valueOf(result[0]);
         String selector = result[1];
-        selector = String.format(selector, quantity);
+        selector = String.format(selector, itemCounter);
         by = switch (locatorType) {
             case id -> By.id(selector);
             case xpath -> By.xpath(selector);
