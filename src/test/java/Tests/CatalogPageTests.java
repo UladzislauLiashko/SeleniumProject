@@ -1,14 +1,13 @@
-package Tests.ForThirdHW;
+package Tests;
 
 import org.example.ThirdSeleniumHW.locators.Locators;
 import org.example.ThirdSeleniumHW.models.DuckOptions;
 import org.example.ThirdSeleniumHW.pages.CatalogPage;
 import org.example.ThirdSeleniumHW.utils.Utils;
 import org.junit.Test;
-import org.openqa.selenium.*;
 
 import static org.junit.Assert.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 public class CatalogPageTests extends TestBase {
     int itemCounter = 0;
@@ -41,7 +40,6 @@ public class CatalogPageTests extends TestBase {
         catalogPage.navigateToElementInCatalog(CatalogPage.yellowDuck);
         catalogPage.addItemToCart(duckOptions1);
         itemCounter += duckOptions1.getNumberOfItems();
-        utils.generalWaiter(Locators.getLocator("Catalog.quantityLocator", itemCounter));
         driver.navigate().back();
         catalogPage.navigateToElementInCatalog(CatalogPage.blueDuck);
         catalogPage.addItemToCart(duckOptions2);

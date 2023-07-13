@@ -1,4 +1,4 @@
-package Tests.ForThirdHW;
+package Tests;
 
 import org.example.ThirdSeleniumHW.locators.Locators;
 import org.example.ThirdSeleniumHW.models.DuckOptions;
@@ -8,7 +8,6 @@ import org.example.ThirdSeleniumHW.pages.CatalogPage;
 import org.example.ThirdSeleniumHW.pages.LoginPage;
 import org.example.ThirdSeleniumHW.utils.Utils;
 import org.junit.Test;
-import org.openqa.selenium.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -32,7 +31,6 @@ public class CartPageTests extends TestBase {
         utils.generalWaiter(Locators.getLocator("Catalog.quantityLocator", itemCounter));
         cartPage.navigateToCart();
         cartPage.fillInRequiredInformation(user);
-        utils.generalWaiter(CartPage.confirmButtonNotDisabled);
         cartPage.confirmOrder();
         assertTrue(driver.findElement(CartPage.successfulOrderMessage).isDisplayed());
     }
@@ -67,7 +65,6 @@ public class CartPageTests extends TestBase {
         driver.navigate().back();
         cartPage.navigateToCart();
         cartPage.removeItemFromCart();
-        utils.generalWaiter(CartPage.emptyCartMessage);
         assertTrue(driver.findElement(CartPage.emptyCartMessage).isDisplayed());
     }
 }

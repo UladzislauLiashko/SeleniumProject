@@ -1,4 +1,4 @@
-package Tests.ForThirdHW;
+package Tests;
 
 import org.example.ThirdSeleniumHW.locators.Locators;
 import org.example.ThirdSeleniumHW.pages.LoginPage;

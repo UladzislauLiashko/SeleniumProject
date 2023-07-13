@@ -2,6 +2,7 @@ package org.example.ThirdSeleniumHW.pages;
 
 import org.example.ThirdSeleniumHW.locators.Locators;
 import org.example.ThirdSeleniumHW.models.UserInfo;
+import org.example.ThirdSeleniumHW.utils.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
@@ -9,13 +10,15 @@ import org.openqa.selenium.support.ui.Select;
 public class CartPage {
 
     private final WebDriver driver;
+    private final Utils utils;
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
+        utils = new Utils(driver);
     }
 
     private static final By checkOutButton = Locators.getLocator("Cart.checkOutButton");
-    private static final By confirmButton = Locators.getLocator("Cart.confirmButton");
+    public static final By confirmButton = Locators.getLocator("Cart.confirmButton");
     private static final By removeItemFromCart = Locators.getLocator("Cart.removeItemFromCart");
     private static final By nameField = Locators.getLocator("UserInfo.nameField");
     private static final By lastNameField = Locators.getLocator("UserInfo.lastNameField");
@@ -30,7 +33,6 @@ public class CartPage {
     public static final By successfulOrderMessage = Locators.getLocator("Cart.successfulOrderMessage");
     public static final By emptyCartMessage = Locators.getLocator("Notifications.emptyCart");
     public static final By confirmButtonNotDisabled = Locators.getLocator("Cart.confirmButtonNotDisabled");
-
 
 
     public void navigateToCart() {
@@ -51,10 +53,13 @@ public class CartPage {
     }
 
     public void confirmOrder() {
+        utils.generalWaiter(CartPage.confirmButtonNotDisabled);
+        utils.generalWaiter(CartPage.confirmButton);
         driver.findElement(confirmButton).click();
     }
 
     public void removeItemFromCart() {
         driver.findElement(removeItemFromCart).click();
+        utils.generalWaiter(CartPage.emptyCartMessage);
     }
 }
