@@ -7,10 +7,9 @@ import org.example.ThirdSeleniumHW.pages.CartPage;
 import org.example.ThirdSeleniumHW.pages.CatalogPage;
 import org.example.ThirdSeleniumHW.pages.LoginPage;
 import org.example.ThirdSeleniumHW.utils.Utils;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertTrue;
 
 public class CartPageTests extends TestBase {
 

@@ -1,9 +1,9 @@
 package Tests;
 
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.time.Duration;
 
@@ -12,7 +12,7 @@ public class TestBase {
     public WebDriver driver;
     private final static String SITE_URL = "https://litecart.stqa.ru/en/";
 
-    @Before
+    @BeforeTest
     public void openBrowser() {
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
@@ -20,7 +20,7 @@ public class TestBase {
         driver.get(SITE_URL);
     }
 
-    @After
+    @AfterTest
     public void shutBrowser() {
         driver.quit();
     }

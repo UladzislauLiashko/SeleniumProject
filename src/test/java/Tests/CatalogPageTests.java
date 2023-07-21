@@ -4,10 +4,10 @@ import org.example.ThirdSeleniumHW.locators.Locators;
 import org.example.ThirdSeleniumHW.models.DuckOptions;
 import org.example.ThirdSeleniumHW.pages.CatalogPage;
 import org.example.ThirdSeleniumHW.utils.Utils;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class CatalogPageTests extends TestBase {
     int itemCounter = 0;

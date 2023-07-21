@@ -2,9 +2,9 @@ package Tests;
 
 import org.example.ThirdSeleniumHW.locators.Locators;
 import org.example.ThirdSeleniumHW.pages.LoginPage;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertTrue;
 
 public class ProfileTests extends TestBase {
     String emailForLogin = "vladleshko@gmail.com";
