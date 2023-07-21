@@ -1,8 +1,5 @@
 package Tests;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 public class TestsForSecondHW {
     String siteUrl = "https://litecart.stqa.ru/en/";
@@ -23,31 +20,27 @@ public class TestsForSecondHW {
 
     public WebDriver driver;
 
-    @Before
+
     public void openBrowser() {
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.get(siteUrl);
     }
 
-    @After
     public void shutBrowser() {
         driver.quit();
     }
 
-    @Test
     public void siteIsOpening() {
         assertEquals(mainPageTitle, driver.getTitle());
     }
 
-    @Test
     public void checkSwitchToSellingPageAndTitle() {
         WebElement rubberDucksButton = driver.findElement(By.xpath(rubberDucksHeaderButton));
         rubberDucksButton.click();
         assertEquals(rubberDucksPageTitle, driver.getTitle());
     }
 
-    @Test
     public void checkSwitchToSubCategoryPageAndTitle() {
         WebElement rubberDucksButton = driver.findElement(By.xpath(rubberDucksHeaderButton));
         Actions builder = new Actions(driver);

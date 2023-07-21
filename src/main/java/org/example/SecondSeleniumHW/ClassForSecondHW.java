@@ -1,10 +1,7 @@
 package org.example.SecondSeleniumHW;
 
-import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static org.junit.Assert.*;
-
 import java.time.Duration;
 
 public class ClassForSecondHW {
